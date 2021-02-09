@@ -4,7 +4,9 @@ import { Component, OnInit } from '@angular/core';
   // selector: '[app-serversp]',
   // selector: '.app-serversp',
   selector: 'app-serversp',
-  template: '<app-server></app-server><app-server></app-server>',
+  template: `
+    <app-server></app-server>
+    <app-server></app-server>`,
   styleUrls: ['./serversp.component.css']
 })
 export class ServerspComponent implements OnInit {
