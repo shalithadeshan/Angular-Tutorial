@@ -2,6 +2,10 @@
   <div class="col-12 col-lg-6">
     <div class="list-group">
       <a
+        [routerLink]="['/servers', server.id]"
+        [queryParams]="{allowEdit: '1' }"
+        [fragment]="'loading'"
+        fragment = "loadings"
         href="#"
         class="list-group-item"
         *ngFor="let server of servers">
@@ -10,10 +14,11 @@
     </div>
   </div>
   <div class="col-12 col-lg-6">
-<!--    <a routerLink="/servers">Reload Page</a>-->
+    <a (click)="onReload()" >Reload Page</a>
     <app-edit-server></app-edit-server>
     <hr>
     <app-server></app-server>
   </div>
 </div>
 
+<!--[routerLink]="['/servers', server.id, 'edit']"-->
