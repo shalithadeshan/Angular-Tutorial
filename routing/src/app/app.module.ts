@@ -11,17 +11,13 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
-import {Routes, RouterModule} from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {AppRoutnigModule} from './app-routnig.module';
+import {AuthService} from './auth.service';
+import {AuthGuardService} from './auth-guard.service';
+import {CanDeactivateGuard} from './servers/edit-server/can-deactivate-guard.service';
 
-const appRoutes: Routes =[
-  { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  // dynamic path
-  { path: 'users/:id/:name', component: UsersComponent },
-  { path: 'servers', component: ServerComponent },
-  { path: 'servers/:id', component: ServerComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent },
-];
+
 
 // @ts-ignore
 @NgModule({
@@ -32,14 +28,15 @@ const appRoutes: Routes =[
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutnigModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthService, AuthGuardService, CanDeactivateGuard], // import AuthService and AuthGuardService
   bootstrap: [AppComponent]
 })
 export class AppModule { }

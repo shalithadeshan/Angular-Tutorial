@@ -6,6 +6,8 @@
 { path: 'servers', component: ServerComponent }, <br>
 ];</p>
 
+<hr>
+
 <p> imports: [
     BrowserModule, <br>
     FormsModule, <br>
@@ -14,13 +16,19 @@
 
 <p> <strong>forRoot</strong> use to register</p>
 
+<hr>
+
 <p>routerLinkActive="active" - to set active </p>
 <p>[routerLinkActiveOptions]="{exact: true}" - full path router link</p>
+
+<hr>
 
 <p>onLoadServers() { <br>
     this.router.navigate(['/servers']); <br>
   }
 <br> programmatically navigate.</p>
+
+<hr>
 
 <p>this.user = { <br>
       id: this.route.snapshot.params['id'], <br>
