@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { ServersService } from '../servers.service';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ServersService} from '../servers.service';
+import {ActivatedRoute, Data, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -9,21 +9,28 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
   styleUrls: ['./server.component.css']
 })
 export class ServerComponent implements OnInit {
-  server: {id: number, name: string, status: string};
+  server: { id: number, name: string, status: string };
 
   constructor(private serversService: ServersService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
-    const id = +this.route.snapshot.params['id']; // using + we can convert id into number
-    this.server = this.serversService.getServer(1);
-    this.route.params
+    this.route.data
       .subscribe(
-        (params: Params) => {
-          this.server = this.serversService.getServer(+params['id']); // using + we can convert id into number
+        (data: Data) => {
+          this.server = data['server'];
         }
       );
+    // const id = +this.route.snapshot.params['id']; // using + we can convert id into number
+    // this.server = this.serversService.getServer(1);
+    // this.route.params
+    //   .subscribe(
+    //     (params: Params) => {
+    //       this.server = this.serversService.getServer(+params['id']); // using + we can convert id into number
+    //     }
+    //   );
   }
 
   onEdit() {
