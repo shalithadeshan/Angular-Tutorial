@@ -1,0 +1,11 @@
+<label class="h4">Set server name</label>
+<input type="text" class="form-control" [(ngModel)]="serverName"><br>
+<button class="btn btn-primary" (click)="onCreateServer()">Set Server</button>
+<!--<p class="h5 text-danger" >{{ serverCreationStatus }}</p>-->
+<!--ngif-->
+<p *ngIf="serverCreated; else noServer" class="text-success">Server was Created, Server name is {{ serverName }}</p>
+<ng-template #noServer>
+  <p class="text-danger">No server was created!</p>
+</ng-template>
+<br>
+<app-string-interpolation *ngFor="let server of servers"></app-string-interpolation>

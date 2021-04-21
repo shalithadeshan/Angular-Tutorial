@@ -1,0 +1,12 @@
+<p>passing and using data with event binding</p>
+<label>Server Name</label>
+<input type="text" class="form-control" (input)="onUpdateServerName($event)">
+<br>
+<p>Two way data binding</p>
+<input type="text" class="form-control" [(ngModel)]="serverName">
+<p>{{ serverName }}</p>
+<br>
+<button class="btn btn-primary" (click)="onCreateServer()">Event Binding</button>
+<p>{{ serverCreationStatus }}</p>
+
+
