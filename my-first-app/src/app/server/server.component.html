@@ -1,1 +1,4 @@
-<p>Server component</p>
+<!-- string interpolation -->
+<p [ngStyle]="{'background-color': getColor()}" [ngClass]="{online: serverStatus === 'Online'}">
+    {{'Server'}} with ID {{serverId}} is {{getServerStatus()}}
+</p>
